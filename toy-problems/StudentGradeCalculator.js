@@ -1,7 +1,6 @@
 function inputStudentMark(x) {
-  //x is a place holder for actual student's mark
-  if (x > 100) {
-    return "Null"; //ensures that it only grades marks less than 100
+  if (x > 100 || x < 0) { // Check if x is out of the valid range (0 to 100)
+    return "Invalid input"; // Return an error message for invalid input
   } else if (x >= 80) {
     return "A";
   } else if (x >= 60) {
@@ -10,10 +9,9 @@ function inputStudentMark(x) {
     return "C";
   } else if (x >= 40) {
     return "D";
-  } else if (x >= 0) {
+  } else {
     return "E";
-  } else if (x < 0) {
-    return "Null";
   }
 }
-console.log(inputStudentMark(60)); //this will return Null as the output intead of a grade.
+
+console.log(inputStudentMark(60)); // Output: "B"

@@ -1,17 +1,22 @@
-const speed=x;// x is the input speed in km/h
+function speedDetector(speed) {
+  const speedLimit = 70; // Speed limit
+  let demeritPoints = 0;
 
-const speedLimit=70; //this is the maximum speed above which a driver gets demerit points 
+  if (speed <= speedLimit) {
+    return "Ok"; // No demerit points if speed is within the limit
+  }
 
-let demeritPoints = 0;
+  const speedAbove = speed - speedLimit; // Calculate how much the speed is above the limit
+  demeritPoints = Math.floor(speedAbove / 5); // Calculate demerit points
 
-if (x<=70){return "Ok"};
- 
+  if (demeritPoints > 12) {
+    return "License suspended"; // Check for license suspension
+  }
 
-const speedAbove=speed - speedLimit;//to get how much higher the speed is above speed limit
-demeritPoints = math.floor(speedAbove/5); //Math.floor->rounds the number to the nearest integer 
-
-if (demeritPoints>12){
-  return "License suspended";
+  return `Points: ${demeritPoints}`;
 }
 
-return `Demerit points: ${demeritPoints}`;// shows how many demerit points a driver has.
+console.log(speedDetector(80)); // Output: "Points: 2"
+console.log(speedDetector(65)); // Output: "Ok"
+console.log(speedDetector(95)); // Output: "Points: 5"
+console.log(speedDetector(130)); // Output: "License suspended"
